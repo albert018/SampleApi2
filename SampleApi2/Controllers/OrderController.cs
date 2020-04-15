@@ -118,7 +118,7 @@ namespace SampleApi2.Controllers
             {
                 Id = order.Id,
                 Itemids = order.Itemids,
-                Currency = order.Currency
+                Currency = order.Currency1
             };
         }
     }
