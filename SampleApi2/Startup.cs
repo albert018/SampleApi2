@@ -14,6 +14,7 @@ using SampleApi2.Interface;
 using SampleApi2.Implement;
 using SampleApi2.Service;
 using SampleApi2.Repositories;
+using SampleApi2.Filters;
 
 namespace SampleApi2
 {
@@ -36,8 +37,10 @@ namespace SampleApi2
             //services.AddSingleton<IPayMent, LinePayMent>();
             services.AddTransient<PaymentService, PaymentService>();
             services.AddSingleton<IOrderRepository, MemoryOrderRepository>();
+            services.AddSingleton<IOrderDapperRepository, DapperOrderRepository>();
             services.AddControllers()
                 .AddNewtonsoftJson();
+            services.AddScoped<OrderExistsFilter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,7 +51,7 @@ namespace SampleApi2
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseRouting();
 
             app.UseAuthorization();

@@ -92,4 +92,12 @@ C:\temp\DotNetCore\SampleApi2\SampleApi2\obj\Debug\netcoreapp3.1\SampleApi2.cspr
 C:\temp\DotNetCore\SampleApi2\SampleApi2\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 C:\temp\DotNetCore\SampleApi2\SampleApi2\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\temp\DotNetCore\SampleApi2\SampleApi2\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\temp\DotNetCore\SampleApi2\SampleApi2\obj\Debug\netcoreapp3.1\SampleApi2.genruntimeconfig.cache
+C:\temp\DotNetCore\SampleApi2\SampleApi2\bin\Debug\netcoreapp3.1\Dapper.dll
+C:\temp\DotNetCore\SampleApi2\SampleApi2\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\temp\DotNetCore\SampleApi2\SampleApi2\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\temp\DotNetCore\SampleApi2\SampleApi2\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\temp\DotNetCore\SampleApi2\SampleApi2\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\temp\DotNetCore\SampleApi2\SampleApi2\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\temp\DotNetCore\SampleApi2\SampleApi2\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\temp\DotNetCore\SampleApi2\SampleApi2\obj\Debug\netcoreapp3.1\SampleApi2.MvcApplicationPartsAssemblyInfo.cache

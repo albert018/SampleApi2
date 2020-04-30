@@ -4,23 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using SampleApi2.Filters;
 using SampleApi2.Models;
 using SampleApi2.Repositories;
 using SampleApi2.Requests;
 using SampleApi2.Responses;
-using SampleApi2.Filters;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace SampleApi2.Controllers
 {
-    [Route("api/order")]
+    [Route("api/dapperOrder")]
     [ApiController]
-    public class OrderController : ControllerBase
+    public class DapperOrderController : ControllerBase
     {
-        private readonly IOrderRepository _orderRepo;
-        
-        public OrderController(IOrderRepository orderRepo)
+        private readonly IOrderDapperRepository _orderRepo;
+
+        public DapperOrderController(IOrderDapperRepository orderRepo)
         {
             _orderRepo = orderRepo;
         }
@@ -28,13 +28,13 @@ namespace SampleApi2.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(Map(_orderRepo.Get()));
+            return Ok(_orderRepo.Get());
         }
 
         [HttpGet("{id:guid}")]
-        public IActionResult Get(Guid id)
+        public IActionResult Get(string id)
         {
-            return Ok(Map(_orderRepo.Get(id)));
+            return Ok(_orderRepo.Get(id));
         }
 
         [HttpPost]
@@ -48,7 +48,7 @@ namespace SampleApi2.Controllers
 
         [HttpPut("{id:guid}")]
         [ServiceFilter(typeof(OrderExistsFilter))]
-        public IActionResult Put(Guid id, OrderRequest request)
+        public IActionResult Put(string id, OrderRequest request)
         {
             var order = _orderRepo.Get(id);
 
@@ -60,7 +60,7 @@ namespace SampleApi2.Controllers
 
         [HttpPatch("{id:guid}")]
         [ServiceFilter(typeof(OrderExistsFilter))]
-        public IActionResult Patch(Guid id, JsonPatchDocument<Order> requestOp)
+        public IActionResult Patch(string id, JsonPatchDocument<OrderDapper> requestOp)
         {
             var item = _orderRepo.Get(id);
 
@@ -72,7 +72,7 @@ namespace SampleApi2.Controllers
 
         [HttpDelete("{id:guid}")]
         [ServiceFilter(typeof(OrderExistsFilter))]
-        public IActionResult Delete(Guid id)
+        public IActionResult Delete(string id)
         {
             var item = _orderRepo.Get(id);
 
@@ -80,34 +80,31 @@ namespace SampleApi2.Controllers
             return NoContent();
         }
 
-        private Order Map(OrderRequest request)
+        private OrderDapper Map(OrderRequest request)
         {
-            return new Order
+            return new OrderDapper
             {
-                Id = Guid.NewGuid(),
-                Itemids = request.Itemids,
+                Id = Guid.NewGuid().ToString(),
                 Currency = request.Currency
             };
         }
 
-        private Order Map(OrderRequest request, Order order)
+        private OrderDapper Map(OrderRequest request, OrderDapper order)
         {
-            order.Itemids = request.Itemids;
             order.Currency = request.Currency;
             return order;
         }
 
-        private IEnumerable<OrderResponse> Map(IEnumerable<Order> order)
+        private IEnumerable<OrderResponse> Map(IEnumerable<OrderDapper> order)
         {
             return order.Select(Map);
         }
 
-        private OrderResponse Map(Order order)
+        private OrderResponse Map(OrderDapper order)
         {
             return new OrderResponse
             {
-                Id = order.Id,
-                Itemids = order.Itemids,
+                Id = new Guid( order.Id),
                 Currency = order.Currency
             };
         }

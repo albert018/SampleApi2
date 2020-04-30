@@ -7,6 +7,6 @@ namespace SampleApi2.Interface
 {
     public interface IPayMent
     {
-        public string PayMent();
+        string PayMent();
     }
 }
